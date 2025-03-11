@@ -21,7 +21,7 @@ interface HeaderProps {
   onFilterChange: (filters: FilterOptions) => void;
   onSync: () => void;
   onAddDocument: () => void;
-  onAddMultipleDocuments: () => void;
+  
   syncButton?: React.ReactNode;
 }
 
@@ -33,7 +33,7 @@ const Header: React.FC<HeaderProps> = ({
   onFilterChange,
   onSync,
   onAddDocument,
-  onAddMultipleDocuments
+  
 }) => {
   // Handle filter changes with correct typing
   const handleFilterChange = (event: SelectChangeEvent) => {
@@ -44,10 +44,7 @@ const Header: React.FC<HeaderProps> = ({
     });
   };
 
-  const handleAddCategory = () => {
-    // Implement add category functionality
-    alert('Add new category clicked');
-  };
+ 
 
   return (
     <Box sx={{ mb: 3 }}>
@@ -76,18 +73,7 @@ const Header: React.FC<HeaderProps> = ({
             Add Document
           </Button>
           
-          <Button
-            variant="contained"
-            startIcon={<AddIcon />}
-            onClick={onAddMultipleDocuments}
-            sx={{ 
-              bgcolor: '#333', 
-              '&:hover': { bgcolor: '#555' },
-              textTransform: 'none'
-            }}
-          >
-            Add Multiple Document
-          </Button>
+          
         </Box>
       </Box>
       
@@ -153,22 +139,7 @@ const Header: React.FC<HeaderProps> = ({
           </Select>
         </FormControl>
         
-        {/* New category button */}
-        <Button
-          variant="outlined"
-          size="small"
-          onClick={handleAddCategory}
-          sx={{ 
-            bgcolor: 'white',
-            borderColor: '#ccc',
-            '&:hover': {
-              borderColor: '#999',
-              bgcolor: '#f9f9f9'
-            }
-          }}
-        >
-          New Category
-        </Button>
+       
       </Box>
     </Box>
   );

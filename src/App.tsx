@@ -59,10 +59,6 @@ const App: React.FC = () => {
     setIsUploaderOpen(true);
   };
   
-  const handleAddMultipleDocuments = () => {
-    // Implementation for adding multiple documents
-    showNotification('This feature is coming soon!', 'info');
-  };
   
   const handleSync = async () => {
     // Simulate sync operation
@@ -160,7 +156,7 @@ const App: React.FC = () => {
           filters={filters}
           onFilterChange={handleFilterChange}
           onAddDocument={handleAddDocument}
-          onAddMultipleDocuments={handleAddMultipleDocuments}
+         
           onSync={handleSync} 
           syncButton={
             <SyncButton 
