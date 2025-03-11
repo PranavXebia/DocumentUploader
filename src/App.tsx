@@ -40,7 +40,15 @@ const App: React.FC = () => {
   const [isUploaderOpen, setIsUploaderOpen] = useState(false);
   const [selectedDocument, setSelectedDocument] = useState<Document | null>(null);
   const [isViewerOpen, setIsViewerOpen] = useState(false);
-  const [notification, setNotification] = useState({ open: false, message: '', severity: 'success' as const });
+  const [notification, setNotification] = useState<{
+    open: boolean;
+    message: string;
+    severity: 'success' | 'error' | 'warning' | 'info';
+  }>({
+    open: false,
+    message: '',
+    severity: 'success'
+  });
   
   // Handlers
   const handleFilterChange = (newFilters: FilterOptions) => {
@@ -125,7 +133,10 @@ const App: React.FC = () => {
     setSelectedDocument(null);
   };
   
-  const showNotification = (message: string, severity: 'success' | 'error' | 'warning' | 'info') => {
+  const showNotification = (
+    message: string, 
+    severity: 'success' | 'error' | 'warning' | 'info'
+  ) => {
     setNotification({
       open: true,
       message,

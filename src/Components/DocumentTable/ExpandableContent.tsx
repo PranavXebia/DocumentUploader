@@ -10,7 +10,6 @@ import {
   TableRow,
   Button,
   Typography,
-  Divider,
   Paper
 } from '@mui/material';
 import CloudDownloadIcon from '@mui/icons-material/CloudDownload';
