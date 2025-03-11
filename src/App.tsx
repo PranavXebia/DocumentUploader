@@ -9,7 +9,7 @@ import DocumentRow from './Components/DocumentTable/DocumentRow';
 import ExpandableContent from './Components/DocumentTable/ExpandableContent';
 import FileUploader from './Components/FileUpload/FileUploader';
 import DocumentViewer from './Components/DocumentView/DocumentViewer';
-import Notification from './Components/common/Notification';
+import Notification from './Components/Common/Notification';
 import { Document, FilterOptions } from './types/Document';
 
 // Sample data
