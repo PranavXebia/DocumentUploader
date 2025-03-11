@@ -22,7 +22,10 @@ interface HeaderProps {
   onSync: () => void;
   onAddDocument: () => void;
   onAddMultipleDocuments: () => void;
+  syncButton?: React.ReactNode;
 }
+
+
 
 const Header: React.FC<HeaderProps> = ({
   lastSync,

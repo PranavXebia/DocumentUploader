@@ -45,7 +45,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({
   const [description, setDescription] = useState<string>('');
   
   // Tags state
-  const [tags, setTags] = useState<string[]>([]);
+  const [tags] = useState<string[]>([]);
   
   // Refs
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -77,7 +77,7 @@ const FileUploader: React.FC<FileUploaderProps> = ({
   };
 
   // Simulate file upload with progress
-  const simulateFileUpload = (fileToUpload: File) => {
+  const simulateFileUpload = (_fileToUpload: File) => {
     setUploadState(UploadState.UPLOADING);
     setUploadProgress(0);
     

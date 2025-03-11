@@ -161,6 +161,7 @@ const App: React.FC = () => {
           onFilterChange={handleFilterChange}
           onAddDocument={handleAddDocument}
           onAddMultipleDocuments={handleAddMultipleDocuments}
+          onSync={handleSync} 
           syncButton={
             <SyncButton 
               lastSync="02/26/2025" 
