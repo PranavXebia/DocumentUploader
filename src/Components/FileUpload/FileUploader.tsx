@@ -6,7 +6,8 @@ import {
   TextField, 
   Button,
   Dialog,
-  IconButton
+  IconButton,
+  Chip
 } from '@mui/material';
 import InsertDriveFileIcon from '@mui/icons-material/InsertDriveFile';
 import CheckCircleOutlineIcon from '@mui/icons-material/CheckCircleOutline';
@@ -45,7 +46,8 @@ const FileUploader: React.FC<FileUploaderProps> = ({
   const [description, setDescription] = useState<string>('');
   
   // Tags state
-  const [tags] = useState<string[]>([]);
+  const [tags, setTags] = useState<string[]>([]);
+  const [tagInput, setTagInput] = useState<string>('');
   
   // Refs
   const fileInputRef = useRef<HTMLInputElement>(null);
@@ -121,6 +123,32 @@ const FileUploader: React.FC<FileUploaderProps> = ({
   // Handle description change
   const handleDescriptionChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setDescription(event.target.value);
+  };
+
+  // Handle tag input change
+  const handleTagInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setTagInput(event.target.value);
+  };
+
+  // Add a tag
+  const handleAddTag = () => {
+    if (tagInput.trim() !== '' && !tags.includes(tagInput.trim())) {
+      setTags([...tags, tagInput.trim()]);
+      setTagInput('');
+    }
+  };
+
+  // Handle key press in tag input
+  const handleTagKeyPress = (event: React.KeyboardEvent<HTMLInputElement>) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      handleAddTag();
+    }
+  };
+
+  // Remove a tag
+  const handleRemoveTag = (tagToRemove: string) => {
+    setTags(tags.filter(tag => tag !== tagToRemove));
   };
 
   // Handle form submission
@@ -408,16 +436,51 @@ const FileUploader: React.FC<FileUploaderProps> = ({
             Tags :
           </Typography>
           
+          {/* Display current tags */}
+          {tags.length > 0 && (
+            <Box style={{ 
+              display: 'flex', 
+              flexWrap: 'wrap', 
+              gap: '0.5rem', 
+              marginBottom: '1rem' 
+            }}>
+              {tags.map((tag, index) => (
+                <Chip
+                  key={index}
+                  label={tag}
+                  onDelete={() => handleRemoveTag(tag)}
+                  style={{ backgroundColor: '#f0f0f0' }}
+                  size="small"
+                />
+              ))}
+            </Box>
+          )}
+          
+          {/* Tag input field */}
+          <TextField
+            fullWidth
+            placeholder="Enter tag"
+            value={tagInput}
+            onChange={handleTagInputChange}
+            onKeyPress={handleTagKeyPress}
+            variant="outlined"
+            size="small"
+            style={{ marginBottom: '1rem' }}
+          />
+          
+          {/* Action Buttons */}
           <Box style={{ display: 'flex', gap: '0.5rem' }}>
             <Button 
               variant="outlined"
               style={{ 
-                borderRadius: '1.25rem',
+                borderRadius: '2rem',
                 color: '#666',
                 borderColor: '#ccc',
                 textTransform: 'none',
-                padding: '0.375rem 1rem'
+                padding: '0.5rem 1.5rem'
               }}
+              onClick={handleAddTag}
+              disabled={!tagInput.trim()}
             >
               Add Tags
             </Button>
@@ -425,11 +488,11 @@ const FileUploader: React.FC<FileUploaderProps> = ({
             <Button 
               variant="outlined"
               style={{ 
-                borderRadius: '1.25rem',
+                borderRadius: '2rem',
                 color: '#666',
                 borderColor: '#ccc',
                 textTransform: 'none',
-                padding: '0.375rem 1rem'
+                padding: '0.5rem 1.5rem'
               }}
               onClick={onCancel}
             >
@@ -439,11 +502,11 @@ const FileUploader: React.FC<FileUploaderProps> = ({
             <Button 
               variant="contained"
               style={{ 
-                borderRadius: '1.25rem',
+                borderRadius: '2rem',
                 backgroundColor: '#333',
                 color: 'white',
                 textTransform: 'none',
-                padding: '0.375rem 1rem'
+                padding: '0.5rem 1.5rem'
               }}
               onClick={handleSubmit}
               disabled={uploadState === UploadState.UPLOADING}
