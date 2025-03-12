@@ -36,7 +36,7 @@ const theme = createTheme({
 const App: React.FC = () => {
   // State
   const [documents, setDocuments] = useState<Document[]>(SAMPLE_DOCUMENTS);
-  const [filters, setFilters] = useState<FilterOptions>({ brand: 'HAL', category: 'Medical' });
+  const [filters, setFilters] = useState<FilterOptions>({ brand: 'HAL' });
   const [isUploaderOpen, setIsUploaderOpen] = useState(false);
   const [selectedDocument, setSelectedDocument] = useState<Document | null>(null);
   const [isViewerOpen, setIsViewerOpen] = useState(false);

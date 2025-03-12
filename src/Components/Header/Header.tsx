@@ -121,24 +121,7 @@ const Header: React.FC<HeaderProps> = ({
             <MenuItem value="HAL">HAL</MenuItem>
             <MenuItem value="ACME">ACME</MenuItem>
           </Select>
-        </FormControl>
-        
-        {/* Category filter */}
-        <FormControl size="small" sx={{ minWidth: 120, bgcolor: 'white' }}>
-          <InputLabel id="category-label">Category</InputLabel>
-          <Select
-            labelId="category-label"
-            id="category-select"
-            name="category"
-            value={filters.category}
-            label="Category"
-            onChange={handleFilterChange}
-          >
-            <MenuItem value="Medical">Medical</MenuItem>
-            <MenuItem value="Finance">Finance</MenuItem>
-          </Select>
-        </FormControl>
-        
+        </FormControl>   
        
       </Box>
     </Box>

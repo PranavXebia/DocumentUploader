@@ -16,5 +16,5 @@ export interface Tag {
   
   export interface FilterOptions {
     brand: string;
-    category: string;
+    category?: string;
   }
